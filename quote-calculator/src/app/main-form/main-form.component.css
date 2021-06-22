@@ -4,3 +4,16 @@
     border: 1px solid lightgray;
     border-radius: 5px;
 }
+
+.full-width {
+    width: 100%;
+}
+
+td {
+    padding-right: 8px;
+    color: white;
+}
+
+.dimension-title {
+    color: white;
+}

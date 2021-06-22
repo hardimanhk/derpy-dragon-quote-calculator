@@ -1,19 +1,60 @@
 <div id="form-wrapper">
     <form>
-        <table class="example-full-width" cellspacing="0"><tr>
-            <td><mat-form-field class="example-full-width">
+        <p class="dimension-title">Wood Dimensions</p>
+        <table class="full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="full-width">
               <mat-label>Length (inches)</mat-label>
-              <input matInput>
+              <input matInput name="inputWL" #inputWL [(ngModel)]='woodLength'>
             </mat-form-field></td>
-            <td><mat-form-field class="example-full-width">
+            <td><mat-form-field class="full-width">
               <mat-label>Width (inches)</mat-label>
-              <input matInput>
+              <input matInput name="inputWL" #inputWW [(ngModel)]='woodWidth'>
             </mat-form-field></td>
-            <td><mat-form-field class="example-full-width">
+            <td><mat-form-field class="full-width">
               <mat-label>Height (inches)</mat-label>
-              <input matInput>
+              <input matInput name="inputWL" #inputWL [(ngModel)]='woodHeight'>
             </mat-form-field></td>
           </tr></table>
+
+          <p class="dimension-title">Epoxy Dimensions</p>
+        <table class="full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="full-width">
+              <mat-label>Length (inches)</mat-label>
+              <input matInput name="inputEL" #inputEL [(ngModel)]='epoxyLength'>
+            </mat-form-field></td>
+            <td><mat-form-field class="full-width">
+              <mat-label>Width (inches)</mat-label>
+              <input matInput name="inputEW" #inputEW [(ngModel)]='epoxyWidth'>
+            </mat-form-field></td>
+            <td><mat-form-field class="full-width">
+              <mat-label>Height (inches)</mat-label>
+              <input matInput name="inputEH" #inputEH [(ngModel)]='epoxyHeight'>
+            </mat-form-field></td>
+          </tr></table>
+
+          <p class="dimension-title">Table Base Estimate</p>
+          <table class="full-width" cellspacing="0"><tr>
+              <td><mat-form-field class="full-width">
+                <mat-label>Low Estimate</mat-label>
+                <input matInput name="lowBase" #lowBase [(ngModel)]='baseLowEstimate'>
+              </mat-form-field></td>
+              <td><mat-form-field class="full-width">
+                <mat-label>High Estimate</mat-label>
+                <input matInput name="highBase" #highBase [(ngModel)]='baseHighEstimate'>
+              </mat-form-field></td>
+            </tr></table>
+
+            <p class="dimension-title">Number of Days of Labor</p>
+          <table class="full-width" cellspacing="0"><tr>
+              <td><mat-form-field class="full-width">
+                <mat-label>Low Estimate</mat-label>
+                <input matInput name="lowDays" #lowDays [(ngModel)]='daysWorkEstimateLow'>
+              </mat-form-field></td>
+              <td><mat-form-field class="full-width">
+                <mat-label>High Estimate</mat-label>
+                <input matInput name="highDays" #highDays [(ngModel)]='daysWorkEstimateHigh'>
+              </mat-form-field></td>
+            </tr></table>
         <button mat-raised-button color="primary" type="submit">Calculate</button>
     </form>
 </div>
