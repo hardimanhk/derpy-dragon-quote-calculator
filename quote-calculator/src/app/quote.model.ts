@@ -1,14 +1,14 @@
 export interface Quote {
-    walnutMaterialsLow: number;
-    walnutMaterialsHigh: number;
-    walnutTotalLow: number;
-    walnutTotalHigh: number;
-    cherryMaterialsLow: number;
-    cherryMaterialsHigh: number;
-    cherryTotalLow: number;
-    cherryTotalHigh: number;
-    mapleMaterialsLow: number;
-    mapleMaterialsHigh: number;
-    mapleTotalLow: number;
-    mapleTotalHigh: number;
+    walnutMaterialsLow: string;
+    walnutMaterialsHigh: string;
+    walnutTotalLow: string;
+    walnutTotalHigh: string;
+    cherryMaterialsLow: string;
+    cherryMaterialsHigh: string;
+    cherryTotalLow: string;
+    cherryTotalHigh: string;
+    mapleMaterialsLow: string;
+    mapleMaterialsHigh: string;
+    mapleTotalLow: string;
+    mapleTotalHigh: string;
 }

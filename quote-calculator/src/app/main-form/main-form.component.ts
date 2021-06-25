@@ -1,39 +1,50 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatAccordion } from '@angular/material/expansion';
 import { Quote } from '../quote.model';
 
 @Component({
   selector: 'app-main-form',
   templateUrl: './main-form.component.html',
-  styleUrls: ['./main-form.component.css'],
+  styleUrls: ['./main-form.component.scss'],
 })
-export class MainFormComponent implements OnInit {
-  woodLength: number = 0;
-  woodWidth: number = 0;
-  woodHeight: number = 0;
-  epoxyLength: number = 0;
-  epoxyWidth: number = 0;
-  epoxyHeight: number = 0;
-  baseLowEstimate: number = 0;
-  baseHighEstimate: number = 0;
-  daysWorkEstimateLow: number = 0;
-  daysWorkEstimateHigh: number = 0;
+export class MainFormComponent {
+  @ViewChild(MatAccordion) accordion!: MatAccordion;
 
-  walnutPricePerFoot: number = 16;
-  cherryPricePerFoot: number = 14;
-  maplePricePerFoot: number = 12;
+  woodLength!: number;
+  woodWidth!: number;
+  woodHeight!: number;
+  epoxyLength!: number;
+  epoxyWidth!: number;
+  epoxyHeight!: number;
+  baseLowEstimate!: number;
+  baseHighEstimate!: number;
+  daysWorkEstimateLow!: number;
+  daysWorkEstimateHigh!: number;
+
+  walnutPricePerFoot: number = 16.0;
+  cherryPricePerFoot: number = 14.0;
+  maplePricePerFoot: number = 12.0;
 
   materialOverestimate = 0.1;
   dailyRate = 750;
 
-  constructor() {}
+  showQuote = false;
 
-  ngOnInit(): void {}
+  quote!: Quote;
+
+  formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
+
+  constructor() {}
 
   calculateMaterialsTotals(price: number, low: boolean): number {
     const boardFeet =
       (this.woodLength * this.woodWidth * this.woodHeight) / 144;
-    const epoxyCost =
+    const epoxyGallons =
       (this.epoxyLength * this.epoxyWidth * this.epoxyHeight) / 231;
+    const epoxyCost = epoxyGallons * 100;
     const baseEstimate = low ? this.baseLowEstimate : this.baseHighEstimate;
     return (
       (price * boardFeet + epoxyCost + baseEstimate) *
@@ -42,6 +53,7 @@ export class MainFormComponent implements OnInit {
   }
 
   createQuoteObject() {
+    console.log(this.woodLength, this.woodWidth, this.woodHeight)
     const walnutMaterialsLow = this.calculateMaterialsTotals(
       this.walnutPricePerFoot,
       true
@@ -80,19 +92,26 @@ export class MainFormComponent implements OnInit {
     const mapleTotalHigh =
       mapleMaterialsHigh + this.daysWorkEstimateHigh * this.dailyRate;
 
-    const quote: Quote = {
-      walnutMaterialsLow: walnutMaterialsLow,
-      walnutMaterialsHigh: walnutMaterialsHigh,
-      walnutTotalLow: walnutTotalLow,
-      walnutTotalHigh: walnutTotalHigh,
-      cherryMaterialsLow: cherryMaterialsLow,
-      cherryMaterialsHigh: cherryMaterialsHigh,
-      cherryTotalLow: cherryTotalLow,
-      cherryTotalHigh: cherryTotalHigh,
-      mapleMaterialsLow: mapleMaterialsLow,
-      mapleMaterialsHigh: mapleMaterialsHigh,
-      mapleTotalLow: mapleTotalLow,
-      mapleTotalHigh: mapleTotalHigh,
+    this.quote = {
+      walnutMaterialsLow: this.formatter.format(walnutMaterialsLow),
+      walnutMaterialsHigh: this.formatter.format(walnutMaterialsHigh),
+      walnutTotalLow: this.formatter.format(walnutTotalLow),
+      walnutTotalHigh: this.formatter.format(walnutTotalHigh),
+      cherryMaterialsLow: this.formatter.format(cherryMaterialsLow),
+      cherryMaterialsHigh: this.formatter.format(cherryMaterialsHigh),
+      cherryTotalLow: this.formatter.format(cherryTotalLow),
+      cherryTotalHigh: this.formatter.format(cherryTotalHigh),
+      mapleMaterialsLow: this.formatter.format(mapleMaterialsLow),
+      mapleMaterialsHigh: this.formatter.format(mapleMaterialsHigh),
+      mapleTotalLow: this.formatter.format(mapleTotalLow),
+      mapleTotalHigh: this.formatter.format(mapleTotalHigh),
     };
+    console.log(this.quote);
+
+    this.showQuote = true;
+  }
+
+  returnToForm() {
+    this.showQuote = false;
   }
 }
