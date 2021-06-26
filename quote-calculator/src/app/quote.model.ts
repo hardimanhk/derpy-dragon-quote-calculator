@@ -11,4 +11,6 @@ export interface Quote {
     mapleMaterialsHigh: string;
     mapleTotalLow: string;
     mapleTotalHigh: string;
+    boardFeet: number;
+    epoxyGallons: number;
 }

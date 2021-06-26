@@ -120,11 +120,22 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
+            Common Numbers
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+          <ul>Board Feet: {{ quote.boardFeet }}</ul>
+          <ul>Epoxy Estimate (Gallons): {{ quote.epoxyGallons }}</ul>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
             Walnut Quote
           </mat-panel-title>
         </mat-expansion-panel-header>
-          <ul>Walnut Total Low Estimate: {{ quote.walnutTotalLow }}</ul>
           <ul>Walnut Total High Estimate: {{ quote.walnutTotalHigh }}</ul>
+          <ul>Walnut Total Low Estimate: {{ quote.walnutTotalLow }}</ul>
+          <ul>Walnut Materials High Estimate: {{ quote.walnutMaterialsHigh }}</ul>
+          <ul>Walnut Materials Low Estimate: {{ quote.walnutMaterialsLow }}</ul>
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -132,8 +143,10 @@
             Cherry Quote
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <ul>Cherry Total Low Estimate: {{ quote.cherryTotalLow }}</ul>
           <ul>Cherry Total High Estimate: {{ quote.cherryTotalHigh }}</ul>
+          <ul>Cherry Total Low Estimate: {{ quote.cherryTotalLow }}</ul>
+          <ul>Cherry Materials High Estimate: {{ quote.cherryMaterialsHigh }}</ul>
+          <ul>Cherry Materials Low Estimate: {{ quote.cherryMaterialsLow }}</ul>
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -141,8 +154,10 @@
             Maple Quote
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <ul>Maple Total Low Estimate: {{ quote.mapleTotalLow }}</ul>
           <ul>Maple Total High Estimate: {{ quote.mapleTotalHigh }}</ul>
+          <ul>Maple Total Low Estimate: {{ quote.mapleTotalLow }}</ul>
+          <ul>Maple Materials High Estimate: {{ quote.mapleMaterialsHigh }}</ul>
+          <ul>Maple Materials Low Estimate: {{ quote.mapleMaterialsLow }}</ul>
       </mat-expansion-panel>
     </mat-accordion>
     <div class="action-buttons-bottom">

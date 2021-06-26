@@ -39,11 +39,17 @@ export class MainFormComponent {
 
   constructor() {}
 
+  calculateBoardFeet() {
+    return (this.woodLength * this.woodWidth * this.woodHeight) / 144;
+  }
+
+  calculateEpoxyGallons() {
+    return (this.epoxyLength * this.epoxyWidth * this.epoxyHeight) / 231;
+  }
+
   calculateMaterialsTotals(price: number, low: boolean): number {
-    const boardFeet =
-      (this.woodLength * this.woodWidth * this.woodHeight) / 144;
-    const epoxyGallons =
-      (this.epoxyLength * this.epoxyWidth * this.epoxyHeight) / 231;
+    const boardFeet = this.calculateBoardFeet();
+    const epoxyGallons = this.calculateEpoxyGallons();
     const epoxyCost = epoxyGallons * 100;
     const baseEstimate = low ? this.baseLowEstimate : this.baseHighEstimate;
     return (
@@ -105,6 +111,8 @@ export class MainFormComponent {
       mapleMaterialsHigh: this.formatter.format(mapleMaterialsHigh),
       mapleTotalLow: this.formatter.format(mapleTotalLow),
       mapleTotalHigh: this.formatter.format(mapleTotalHigh),
+      boardFeet: Math.floor(this.calculateBoardFeet() * 100) / 100,
+      epoxyGallons: Math.floor(this.calculateEpoxyGallons() * 100) / 100
     };
     console.log(this.quote);
 
